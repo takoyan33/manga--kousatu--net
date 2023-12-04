@@ -28,7 +28,7 @@ export const CardPost = React.memo(
     createtime,
     selected,
   }: SinglePost) => {
-    const [users, setUsers] = useState(null);
+    const [users, setUsers] = useState([]);
     const [comments, setComments] = useState("");
     const style: React.CSSProperties = {
       whiteSpace: "pre-line",
@@ -112,7 +112,7 @@ export const CardPost = React.memo(
                   </div>
                   <div key={id} className="cursor-pointer">
                     {users &&
-                      users.map((user) => {
+                      users.map((user: any) => {
                         return (
                           <>
                             {email === user.email && (

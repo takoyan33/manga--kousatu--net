@@ -10,10 +10,10 @@ import { postImage } from 'layouts/api/upload'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import { CommonHead } from 'layouts/components/ui'
-// import Image from 'react-image-resizer'
+import Image from "next/image";
 
 export default function Photoedit() {
-  const [image, setImage] = useState<string>()
+  const [image, setImage] = useState()
   const [result, setResult] = useState('')
   const router = useRouter()
   const [createObjectURL, setCreateObjectURL] = useState<string>(null)
@@ -65,12 +65,13 @@ export default function Photoedit() {
       <p className='my-5'>
         現在のユーザー画像
         {user && (
-          // <Image
-          //   className='m-auto max-w-sm text-center'
-          //   height={100}
-          //   width={100}
-          //   src={user.photoURL}
-          // />
+          <Image
+            className='m-auto max-w-sm text-center'
+            height={100}
+            width={100}
+            src={user.photoURL}
+            alt=""
+          />
         )}
       </p>
 

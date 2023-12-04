@@ -35,7 +35,7 @@ export const getStaticPaths = async () => {
     return data[key];
   });
 
-  const paths = array[0].map((post: any) => {
+  const paths = array[0].map((post) => {
     return {
       params: { id: post.fields.id.stringValue.toString() },
     };
@@ -47,7 +47,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context: any) => {
+export const getStaticProps = async (context) => {
   const id = context.params.id;
   const res = await fetch(
     "https://firestore.googleapis.com/v1/projects/next-auth-app-2aa40/databases/(default)/documents/posts/" +

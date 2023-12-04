@@ -48,25 +48,35 @@ export const useSignup = () => {
 
 //ログイン
 export const useLogin = () => {
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const auth = getAuth()
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const auth = getAuth();
 
-  const login = async (email: string, password: string): Promise<UserCredential> => {
-    setError(null)
+  const login = async (
+    email: string,
+    password: string
+  ): Promise<UserCredential> => {
+    setError(null);
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
-      setSuccess(true)
-      return userCredential
-    } catch (err) {
-      console.log(err.message)
-      setError(err.message)
-      throw err
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      setSuccess(true);
+      return userCredential;
+    } catch (err: any) {
+      if (err instanceof Error) {
+        console.log(err.message);
+        setError(err.message);
+        throw err;
+      }
+      throw err;
     }
-  }
+  };
+  return { success, error, login };
+};
 
-  return { success, error, login }
-}
 
 //ログアウト
 export const useLogOut = () => {
@@ -131,7 +141,7 @@ export const SignInWithGoogle = () => {
 //記事の投稿
 //記事の修正
 //投稿の削除
-export const deletePost = (routerid) => {
+export const deletePost = (routerid: any) => {
   const router = useRouter()
   //data.idを送っているのでidを受け取る
   let deletePost = doc(database, 'posts', routerid)

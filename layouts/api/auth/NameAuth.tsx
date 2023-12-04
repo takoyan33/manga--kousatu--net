@@ -2,39 +2,38 @@ import React, { useState, useCallback } from 'react'
 import { database } from 'firebaseConfig.js'
 import { collection, getDocs } from 'firebase/firestore'
 import { useRouter } from 'next/router'
-import { getAuth, updateProfile, deleteUser } from 'firebase/auth'
+import { getAuth, updateProfile } from 'firebase/auth'
 import { Button, Box, TextField } from '@mui/material'
 
 export default function NameAuth() {
-  const [ID, setID] = useState(null)
-  const [title, setTitle] = useState<string>('')
-  const [context, setContext] = useState<string>('')
-  const [categori, setCategori] = useState<string>('')
   const auth = getAuth()
   const [displayName, setDisplayName] = useState<string>('')
   const router = useRouter()
-  const [createtime, setCreatetime] = useState<string>('')
-  const [isUpdate, setIsUpdate] = useState<boolean>(false)
   const postsData = collection(database, 'posts')
-  const [firedata, setFiredata] = useState([])
-  const [downloadURL, setDownloadURL] = useState<string>(null)
+  const [firedata, setFiredata] = useState<{ id: string }[]>([]);  
   const [result, setResult] = useState<string>('')
 
   const updateName = async () => {
-    updateProfile(auth.currentUser, {
-      displayName: displayName,
-    })
-      .then(() => {
-        alert('プロフィールを更新しました。')
-        setDisplayName('')
-        setResult('')
-        getallPost()
-        router.push('/profile')
+    const user = auth.currentUser;
+    if (user !== null) {
+      updateProfile(user, {
+        displayName: displayName,
       })
-      .catch((error) => {
-        console.error(error)
-      })
-  }
+        .then(() => {
+          alert("プロフィールを更新しました。");
+          setDisplayName("");
+          setResult("");
+          getallPost();
+          router.push("/profile");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      // Handle the case when auth.currentUser is null
+      console.error("User is null");
+    }
+  };
 
   const getallPost = async () => {
     await getDocs(postsData).then((response) => {
@@ -44,17 +43,6 @@ export default function NameAuth() {
         }),
       )
     })
-  }
-
-  const getID = (id, title, context, downloadURL, categori, cratetime, displayname, createtime) => {
-    setID(id)
-    setContext(context)
-    setTitle(title)
-    setDownloadURL(downloadURL)
-    setIsUpdate(true)
-    setCategori(categori)
-    setCreatetime(cratetime)
-    setDisplayName(displayname)
   }
 
   return (

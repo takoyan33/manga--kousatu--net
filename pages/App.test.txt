@@ -1,9 +1,0 @@
-import { render, screen } from '@testing-library/react'
-import App from './App'
-
-test('renders Manga Study link', () => {
-  render(<App />)
-  const linkElement = screen.getByText(/Manga Study/i)
-  expect(linkElement).toBeInTheDocument()
-  //その文字が存在しているか
-})

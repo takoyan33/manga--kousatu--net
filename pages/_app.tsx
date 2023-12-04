@@ -3,7 +3,7 @@ import 'tailwindcss/tailwind.css'
 import { Header, Footer } from 'layouts/components/ui'
 import { AuthProvider } from 'layouts/context/AuthContext'
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }:any) {
   return (
     <AuthProvider>
       <>

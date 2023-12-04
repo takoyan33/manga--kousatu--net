@@ -12,7 +12,6 @@ import {
 import { useRouter } from "next/router";
 import { TextField, Box, FormLabel } from "@mui/material";
 import { postImage, postContextImage } from "layouts/api";
-// import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core'
 import "moment/locale/ja";
 import ImageUpload from "layouts/utils/ImageUpload";
 import ImageUploadContext from "layouts/utils/ImageUploadContext";
@@ -34,17 +33,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import dynamic from "next/dynamic";
 
 // フォームの型
-type FormInput = {
-  title: string;
-  categori: string;
-  netabare: string;
-  context: string;
-  display: boolean;
-};
+// type FormInput = {
+//   title: string;
+//   categori: string;
+//   netabare: string;
+//   context: string;
+//   display: boolean;
+// };
 
 // バリデーションルール
 const schema = yup.object({
   title: yup.string().required("必須です"),
+  categori: yup.string(),
+  netabare: yup.string(),
+  context: yup.string(),
+  display: yup.boolean(),
 });
 
 export default function Post() {
@@ -54,7 +57,7 @@ export default function Post() {
   const databaseRef = collection(database, "posts");
   const q = query(databaseRef, orderBy("timestamp", "desc"));
   const [image, setImage] = useState(null);
-  const [contextImage, setContextImage] = useState<File[]>([]);
+  const [contextImage, setContextImage] = useState([]);
   const [createObjectURL, setCreateObjectURL] = useState<string>("");
   const [createContextObjectURL, setCreateContextObjectURL] = useState("");
   const [userid, setUserId] = useState(null);
@@ -91,7 +94,7 @@ export default function Post() {
     });
   };
 
-  const uploadImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const uploadImage = (event) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       setImage(file);
@@ -100,7 +103,7 @@ export default function Post() {
   };
 
   const uploadToClientContext = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event
   ) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -111,11 +114,11 @@ export default function Post() {
 
   const router = useRouter();
 
-  type addPost = {
-    toLocaleString(timeZone): string;
-  };
+  // type addPost = {
+  //   toLocaleString(timeZone): string;
+  // };
 
-  const addPost: SubmitHandler<FormInput> = async (data) => {
+  const addPost = async (data) => {
     // 処理中(true)なら非同期処理せずに抜ける
     if (processing) return;
     // 処理中フラグを上げる
@@ -184,7 +187,7 @@ export default function Post() {
   const [plainText, setPlainText] = useState("");
   const [html, setHtml] = useState("");
 
-  const handleEditorChange = (plainText: string, html: string) => {
+  const handleEditorChange = (plainText, html) => {
     setPlainText(plainText);
     setHtml(html);
     setPostsLength(plainText.length);
@@ -263,8 +266,8 @@ export default function Post() {
                         type="radio"
                         id={categori.id}
                         value={categori.value}
-                        onChange={() => field.onChange(categori.value)} 
-                        checked={field.value === categori.value} 
+                        onChange={() => field.onChange(categori.value)}
+                        checked={field.value === categori.value}
                       />
                       <label htmlFor={categori.id}>{categori.label}</label>
                     </div>

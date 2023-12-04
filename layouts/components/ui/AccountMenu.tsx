@@ -6,13 +6,13 @@ import DraftsIcon from '@mui/icons-material/Drafts'
 import SendIcon from '@mui/icons-material/Send'
 import Link from 'next/link'
 
-export const AccountMenu = (onClick) => (
+export const AccountMenu = (onClick: any) => (
   <List
-    sx={{ width: '100%', maxWidth: 300, bgcolor: 'background.paper' }}
-    component='nav'
-    aria-labelledby='nested-list-subheader'
+    sx={{ width: "100%", maxWidth: 300, bgcolor: "background.paper" }}
+    component="nav"
+    aria-labelledby="nested-list-subheader"
     subheader={
-      <ListSubheader component='div' id='nested-list-subheader'>
+      <ListSubheader component="div" id="nested-list-subheader">
         アカウントメニュー
       </ListSubheader>
     }
@@ -21,7 +21,7 @@ export const AccountMenu = (onClick) => (
       <ListItemIcon>
         <SendIcon />
       </ListItemIcon>
-      <Link href='/profile/edit'> プロフィールを変更する</Link>
+      <Link href="/profile/edit"> プロフィールを変更する</Link>
     </ListItemButton>
     {/* <button className="m-5">
           <Link href="/profile/emailedit">メールアドレスを変更する</Link>
@@ -30,15 +30,15 @@ export const AccountMenu = (onClick) => (
       <ListItemIcon>
         <SendIcon />
       </ListItemIcon>
-      <Link href='/profile/edit/password'>パスワードを変更する</Link>
+      <Link href="/profile/edit/password">パスワードを変更する</Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <DraftsIcon />
       </ListItemIcon>
-      <button className='' onClick={onClick}>
+      <button className="" onClick={onClick}>
         アカウントを退会する
       </button>
     </ListItemButton>
   </List>
-)
+);

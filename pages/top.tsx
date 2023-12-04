@@ -18,8 +18,23 @@ import Select from "@mui/material/Select";
 import { Changetab } from "layouts/components/ui/Changetab";
 import Image from "next/image";
 
+type PostData = {
+  id: any;
+  title: string;
+  categori: string;
+  netabare: string;
+  context: string;
+  createtime: string;
+  displayname: string;
+  email: string;
+  photoURL: string;
+  downloadURL: string;
+  likes: any;
+  selected: string[];
+};
+
 export default function Index() {
-  const [postData, setPostData] = useState([]);
+  const [postData, setPostData] = useState<PostData[]>([]);
   const [searchName, setSearchName] = useState("");
   const [loadIndex, setLoadIndex] = useState(6);
   const [isEmpty, setIsEmpty] = useState(false);
