@@ -42,7 +42,7 @@
     "**/*.tsx",
     "types.d.ts",
     ".next/types/**/*.ts"
-, "layouts/api/uploadContext.jsx", "pages/post/new/index.jsx", "pages/post/new/preview.jsx", "pages/posts/[id].jsx", "pages/profile/[userid].jsx", "pages/profile/edit/index.jsx", "pages/profile/edit/photoedit.jsx", "pages/profile/index.jsx", "pages/profile/likespost.jsx"  ],
+, "layouts/api/uploadContext.tsx", "pages/post/new/index.jsx", "pages/post/new/preview.jsx", "pages/posts/[id].jsx", "pages/profile/[userid].jsx", "pages/profile/edit/index.jsx", "pages/profile/edit/photoedit.jsx", "pages/profile/index.jsx", "pages/profile/likespost.jsx"  ],
   "exclude": [
     "node_modules"
   ]

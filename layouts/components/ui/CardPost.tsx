@@ -61,7 +61,7 @@ export const CardPost = React.memo(
     }, []);
 
     return (
-      <div className="w-full cursor-pointer md:w-1/3">
+      <div className="">
         <Link href={`/post/${id}`}>
           <div key={id} className="m-auto w-4/5">
             <Card

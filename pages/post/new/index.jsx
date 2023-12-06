@@ -58,7 +58,7 @@ export default function Post() {
   const q = query(databaseRef, orderBy("timestamp", "desc"));
   const [image, setImage] = useState(null);
   const [contextImage, setContextImage] = useState([]);
-  const [createObjectURL, setCreateObjectURL] = useState<string>("");
+  const [createObjectURL, setCreateObjectURL] = useState("");
   const [createContextObjectURL, setCreateContextObjectURL] = useState("");
   const [userid, setUserId] = useState(null);
   const [result, setResult] = useState("");
@@ -82,7 +82,7 @@ export default function Post() {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInput>({
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -102,9 +102,7 @@ export default function Post() {
     }
   };
 
-  const uploadToClientContext = (
-    event
-  ) => {
+  const uploadToClientContext = (event) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       setContextImage((prevContextImages) => [...prevContextImages, file]);

@@ -16,7 +16,6 @@ import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import { postImage } from "layouts/api/upload";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import { TagsInput } from "react-tag-input-component";
 import { CommonHead } from "layouts/components/ui";
@@ -29,7 +28,7 @@ export default function Edit() {
   const [users, setUsers] = useState(null);
   const router = useRouter();
   const usersRef = collection(database, "users");
-  const [createObjectURL, setCreateObjectURL] = useState<string>(null);
+  const [createObjectURL, setCreateObjectURL] = useState(null);
   const [username, setUsername] = useState(null);
   const [bio, setBio] = useState(null);
   const { user } = useAuthContext();
@@ -115,7 +114,6 @@ export default function Edit() {
                 <h2 className="my-12 text-center text-2xl font-semibold">
                   プロフィールの編集
                 </h2>
-
                 <p className="font-semib my-12 text-center">
                   現在のプロフィール画像
                   <br />
@@ -134,7 +132,6 @@ export default function Edit() {
                     </p>
                   )}
                 </p>
-
                 <Box
                   component="form"
                   className=""
@@ -145,13 +142,15 @@ export default function Edit() {
                     <p className="my-4 text-center">新しいプロフィール画像</p>
                     <br />
                     <div className="flex justify-center">
-                      <Image
-                        className="m-auto max-w-sm text-center"
-                        height={100}
-                        width={100}
-                        src={createObjectURL}
-                        alt="画像"
-                      />
+                      {createObjectURL && (
+                        <Image
+                          className="m-auto max-w-sm text-center"
+                          height={100}
+                          width={100}
+                          src={createObjectURL}
+                          alt="画像"
+                        />
+                      )}
                     </div>
                     <div className="m-auto my-4 text-center">
                       <label
@@ -182,12 +181,12 @@ export default function Edit() {
                         onChange={uploadImage}
                       />
                     </div>
-                    <label className="my-4 text-center" htmlFor="outlined-name">
+                    <label className="my-4 text-center" htmlFor="name">
                       名前（最大10文字）
                     </label>
                     <div className="text-center">
                       <input
-                        id="outlined-name"
+                        id="name"
                         className="sm:text-md block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                         defaultValue={user.username}
                         type="text"
@@ -195,12 +194,12 @@ export default function Edit() {
                       />
                     </div>
                     <br />
-                    <label className="my-4 text-center">
+                    <label className="my-4 text-center" htmlFor="profile">
                       現在のプロフィール：（最大30文字）
                     </label>
                     <div className="text-center">
                       <input
-                        id="outlined-name"
+                        id="profile"
                         className="sm:text-md block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                         defaultValue={user.bio}
                         type="text"
@@ -208,11 +207,12 @@ export default function Edit() {
                       />
                     </div>
                     <br />
-                    <p className="my-4 text-center">
+                    <label className="my-4 text-center" htmlFor="likes">
                       好きな漫画（最大10作品）*
-                    </p>
+                    </label>
                     <div className="m-auto w-80 text-center">
                       <TagsInput
+                        id="likes"
                         value={user.favorite}
                         onChange={setSelected}
                         name="selected"
