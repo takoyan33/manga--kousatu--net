@@ -1,0 +1,31 @@
+import React from "react";
+import { render } from "@testing-library/react";
+import { ProfileId } from "../layouts/components/ui/ProfileId";
+
+// describe("ProfileId Component", () => {
+//   const mockProfile = {
+//     id: 1,
+//     profileImage: "path_to_image.jpg",
+//     username: "JohnDoe",
+//     bio: "Lorem ipsum dolor sit amet",
+//     favorite: ["Manga1", "Manga2"],
+//   };
+
+//   it("renders profile information correctly", () => {
+//     const { queryByText } = render(
+//       <ProfileId
+//         id={mockProfile.id}
+//         profileImage={mockProfile.profileImage}
+//         username={mockProfile.username}
+//         bio={mockProfile.bio}
+//         favorite={mockProfile.favorite}
+//       />
+//     );
+
+//     expect(queryByText(mockProfile.username)).toBeInTheDocument();
+//     expect(queryByText("好きな漫画")).toBeInTheDocument();
+//     expect(queryByText("#Manga1")).toBeInTheDocument();
+//     expect(queryByText("#Manga2")).toBeInTheDocument();
+//     expect(queryByText(mockProfile.bio)).toBeInTheDocument();
+//   });
+// });

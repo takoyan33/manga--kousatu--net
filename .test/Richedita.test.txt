@@ -1,0 +1,17 @@
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import Richedita from "../layouts/components/ui/Richedita";
+
+describe("Richedita Component", () => {
+  it("renders Richedita component correctly", () => {
+    const onChange = jest.fn();
+    const value = "";
+
+    const { getByPlaceholderText } = render(
+      <Richedita onChange={onChange} value={value} />
+    );
+
+    const editor = getByPlaceholderText("文字を入力してください");
+    expect(editor).toBeInTheDocument();
+  });
+});

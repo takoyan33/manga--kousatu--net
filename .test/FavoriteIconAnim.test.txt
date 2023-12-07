@@ -1,0 +1,10 @@
+import React from "react";
+import { render } from "@testing-library/react";
+import { FavoriteIconAnim } from "../layouts/components/ui/FavoriteIconAnim";
+
+describe("FavoriteIconAnim Component", () => {
+  it("renders without crashing", () => {
+    render(<FavoriteIconAnim on={true} />); // You can test with on={true} and on={false} for different states
+    // Add assertions if needed
+  });
+});

@@ -1,30 +1,31 @@
-import { Player } from '@lottiefiles/react-lottie-player'
-import { useEffect, useRef } from 'react'
-import heartAnimation from 'layouts/assets/heart-animation.json'
+import { Player } from "@lottiefiles/react-lottie-player";
+import { useEffect, useRef } from "react";
+import heartAnimation from "layouts/assets/heart-animation.json";
 
 export const FavoriteIconAnim: React.FC<{
-  on: boolean
+  on: boolean;
 }> = ({ on }) => {
-  const playerRef = useRef<Player>(null)
+  const playerRef = useRef<Player | null>(null);
 
   useEffect(() => {
-    if (!playerRef.current) {
-      return
+    if (playerRef.current) {
+      if (on) {
+        playerRef.current.play();
+      } else {
+        playerRef.current.stop();
+      }
     }
-    if (on) {
-      playerRef.current.play()
-    } else {
-      playerRef.current.stop()
-    }
-  }, [on])
+  }, [on]);
 
   return (
     <Player
-      ref={playerRef}
+      ref={(ref) => {
+        playerRef.current = ref;
+      }}
       speed={1.8}
       keepLastFrame
       src={heartAnimation}
       style={{ height: 150 }}
     />
-  )
-}
+  );
+};

@@ -1,0 +1,22 @@
+import React from "react";
+import { Story } from "@storybook/react";
+import { FavoriteIconAnim } from "../layouts/components/ui/FavoriteIconAnim";
+
+export default {
+  title: "FavoriteIconAnim",
+  component: FavoriteIconAnim,
+};
+
+const Template: Story<{ on: boolean }> = (args) => (
+  <FavoriteIconAnim {...args} />
+);
+
+export const AnimationOn = Template.bind({});
+AnimationOn.args = {
+  on: true,
+};
+
+export const AnimationOff = Template.bind({});
+AnimationOff.args = {
+  on: false,
+};

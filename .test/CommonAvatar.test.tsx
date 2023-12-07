@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { CommonAvatar } from "../layouts/components/text";
+import "@testing-library/jest-dom";
 
 test("renders CommonAvatar component", () => {
   const mockProps = {
