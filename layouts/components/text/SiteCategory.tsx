@@ -1,19 +1,17 @@
-import { DOMAttributes, FC, memo, ReactNode } from 'react'
-import Link from 'next/link'
+import { memo } from "react";
 
-type Props = {
-  href: string
-  text: string
-  className: string
-}
+export type siteCategoryProps = {
+  href: string;
+  text: string;
+  className: string;
+};
 
-// eslint-disable-next-line react/display-name
-export const SiteCategory = memo(({ href, text, className }: Props) => {
+export const SiteCategory = memo(({ href, text, className }: siteCategoryProps) => {
   return (
     <span className={className}>
-      <Link href={href}>{text}</Link>
+      <a href={href}>{text}</a>
     </span>
-  )
-})
+  );
+});
 
-SiteCategory.displayName = 'SiteCategory'
+SiteCategory.displayName = "SiteCategory";

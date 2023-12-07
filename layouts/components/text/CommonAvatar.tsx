@@ -1,20 +1,18 @@
-/* eslint-disable react/display-name */
-import Avatar from '@mui/material/Avatar'
-import React from 'react'
+import Avatar from "@mui/material/Avatar";
+import React from "react";
 
-type Props = {
-  photoURL: string
-  displayname: string
-}
+export type avatarProps = {
+  photoURL: string;
+  displayname: string;
+};
 
 //React.memo化
-const CommonAvatar = React.memo(({ photoURL, displayname }: Props) => {
+export const CommonAvatar = React.memo(({ photoURL, displayname }: avatarProps) => {
   return (
     <>
-      <Avatar alt='Remy Sharp' src={photoURL} />
-      <span className='text-xl'>{displayname}</span>
+      <Avatar alt="Remy Sharp" src={photoURL} />
+      <span className="text-xl">{displayname}</span>
     </>
-  )
-})
+  );
+});
 
-export default CommonAvatar
