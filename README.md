@@ -14,21 +14,30 @@ Manga Study では、漫画の考察などを自由に投稿・閲覧できる w
 
 ## 使用言語、環境
 
-使用言語：TypeScript
+### フロント
 
-フレームワーク：React,Next.js
+- [Next.js](https://nextjs.org/blog/next-13) 14
+- [React](https://ja.reactjs.org/) 18.0.26
+- [typescript](https://www.typescriptlang.org/) 4.9.4
+- [Storybook](https://storybook.js.org/)
 
-認証：Firebase Authentication
+### バックエンド
 
-サーバー：Vercel
+-[Cloud Firestore](https://firebase.google.com/docs/firestore)
 
-テスト： Jest
+### ホスティング
 
-データベース：Cloud Firestore (NoSQL)
+- Vercel
+- AWS
 
-ライブラリ：moment.js,Tailwind CSS,
+### 認証
 
-コンポーネント： Storybook
+- Firebase Authentication
+
+### テスト関連
+
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Jest](https://jestjs.io/ja/)
 
 ## 使い方
 
@@ -36,13 +45,13 @@ git clone
 
 npm install
 
-yarn dev
+npm run dev
 
 ## デプロイ方法
 
 git add .
 git commit -m " "
-git push
+git push origin main
 
 ### こだわりポイント
 
