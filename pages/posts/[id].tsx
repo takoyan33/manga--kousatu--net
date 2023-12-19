@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid'
 import { getAuth } from 'firebase/auth'
 import Button from '@mui/material/Button'
 import { where } from 'firebase/firestore'
-import Image from 'react-image-resizer'
 import Avatar from '@mui/material/Avatar'
 import { SiteButton } from 'layouts/components/button'
 import { SiteCategory } from 'layouts/components/text'
@@ -99,12 +98,12 @@ const Daitails = ({ post }) => {
           {post.fields.title.stringValue}
         </div>
         <div className='my-6 flex justify-center'>
-          <Image
+          {/* <Image
             className='m-auto max-w-sm text-center'
             height={500}
             width={500}
             src={post.fields.downloadURL.stringValue}
-          />
+          /> */}
         </div>
         <div className='my-4 text-2xl'>{post.fields.title.stringValue}</div>
         <br />
@@ -171,12 +170,12 @@ const Daitails = ({ post }) => {
           <br />
           {post.fields.contextimage.stringValue && (
             <div className='flex justify-center'>
-              <Image
+              {/* <Image
                 className='m-auto max-w-sm text-center'
                 height={500}
                 width={500}
                 src={post.fields.contextimage.stringValue}
-              />
+              /> */}
             </div>
           )}
           <div className='my-4'>
