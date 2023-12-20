@@ -62,7 +62,7 @@ export const getStaticProps = async (context: any) => {
   };
 };
 
-const Daitails = ({ post }) => {
+const Daitails = (post: any) => {
   const [users, setUsers] = useState(null);
   const databaseRef = collection(database, "posts");
   const usersRef = collection(database, "users");
