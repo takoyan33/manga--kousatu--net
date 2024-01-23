@@ -1,6 +1,7 @@
 import { CommonHead } from "layouts/components/ui/CommonHead";
 import { SiteButton } from "layouts/components/button";
 import { getAuth } from "firebase/auth";
+import { SiteTitle } from "layouts/components/text";
 import Image from "next/image";
 
 export default function Top() {
@@ -35,7 +36,7 @@ export default function Top() {
         </div>
       </div>
       <hr></hr>
-      <h2 className="my-12 text-center text-2xl font-semibold">機能</h2>
+      <SiteTitle text="機能" />
       <div className="my-10 md:my-20 m-auto flex flex-col flex-wrap justify-center md:flex-row w-11/12 md:w-full">
         <div className="w-full md:w-1/3">
           <Image

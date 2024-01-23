@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { successNotify, errorNotify } from "layouts/components/text";
 import { Stack, TextField } from "@mui/material";
 import { useSignup } from "./useAuth";
+import GoogleIcon from "@mui/icons-material/Google";
 
 // フォームの型
 type FormInput = {
@@ -75,91 +76,89 @@ export default function SignUp() {
 
   return (
     <>
-      <Stack
-        component="form"
-        className="m-auto"
-        noValidate
-        spacing={2}
-        sx={{ width: "38ch" }}
-      >
+      <div className="w-11/12 md:w-4/12 m-auto">
         <ToastContainer />
-        <div>
+        <div className="my-4 md:my-8">
           <label className="my-4 text-center">
             メールアドレス<span className="text-red-600">*</span>
           </label>
         </div>
-        <TextField
-          id="outlined-basic"
-          label="sample@gmail.com"
-          className="m-auto w-80"
-          variant="outlined"
-          {...register("email", { required: true })}
-          error={Boolean(errors.email)}
-          helperText={errors.email?.message}
-        />
+        <div className="my-2 mb-4">
+          <TextField
+            id="outlined-basic"
+            label="sample@gmail.com"
+            className="m-auto w-80"
+            variant="outlined"
+            {...register("email", { required: true })}
+            error={Boolean(errors.email)}
+            helperText={errors.email?.message}
+          />
+        </div>
         <div>
           <label className="my-4 text-center">
             パスワード（8文字以上)<span className="text-red-600">*</span>
           </label>
         </div>
-        <TextField
-          id="outlined-basic"
-          label="Password"
-          type="password"
-          variant="outlined"
-          className="m-auto w-80"
-          {...register("password", { minLength: 8 })}
-          error={Boolean(errors.password)}
-          helperText={errors.password?.message}
-        />
+        <div className="my-2 mb-4">
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            type="password"
+            variant="outlined"
+            className="m-auto w-80"
+            {...register("password", { minLength: 8 })}
+            error={Boolean(errors.password)}
+            helperText={errors.password?.message}
+          />
+        </div>
         <div>
           <label className="my-4 text-center">
             確認用パスワード（8文字以上)<span className="text-red-600">*</span>
           </label>
         </div>
-        <TextField
-          id="outlined-basic"
-          label="Password"
-          type="password"
-          variant="outlined"
-          className="m-auto w-80"
-          {...register("confirmPassword", {
-            validate: (value) => value === watch("password"),
-          })}
-          error={Boolean(errors.confirmPassword)}
-          helperText={errors.confirmPassword?.message}
-        />
+        <div className="my-2 mb-4">
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            type="password"
+            variant="outlined"
+            className="m-auto w-80"
+            {...register("confirmPassword", {
+              validate: (value) => value === watch("password"),
+            })}
+            error={Boolean(errors.confirmPassword)}
+            helperText={errors.confirmPassword?.message}
+          />
+        </div>
         <SiteButton
           href=""
           onClick={handleSubmit(handleSignUp)}
           text="新規登録"
           className="m-auto my-8 w-80 text-center"
         />
-        <SiteButton
-          href=""
-          text="Googleで新規登録"
-          onClick={SignUpWithGoogle}
-          className="m-auto my-4 w-80 text-center"
+        <div className="m-auto flex justify-center p-4 w-6/12">
+          <button className="m-auto" onClick={SignUpWithGoogle}>
+            <GoogleIcon />
+            <br></br>
+            <p className="text-center">Googleで登録</p>
+          </button>
+        </div>
+        <Link href="/login">
+          <p className="my-4 underline">ログインはこちら</p>
+        </Link>
+        <ToastContainer
+          position="top-right"
+          autoClose={6000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
         />
-        <p className="my-4">
-          登録済みの方はこちら
-          <Link href="/login">
-            <span className="text-blue-500 underline">ログイン</span>
-          </Link>
-          <ToastContainer
-            position="top-right"
-            autoClose={6000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
-        </p>
-      </Stack>
+      </div>
     </>
   );
 }
