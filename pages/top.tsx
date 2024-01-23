@@ -95,8 +95,8 @@ export default function Index() {
   return (
     <div>
       <CommonHead />
-      <div className="m-auto my-5 flex justify-center text-center">
-        <Image
+      {/* <div className="m-auto my-5 flex justify-center text-center"> */}
+      {/* <Image
           className="m-auto"
           height={100}
           width={200}
@@ -108,7 +108,7 @@ export default function Index() {
         Manga Studyでは、人気漫画の考察を
         <br />
         自由に投稿・閲覧できるwebサイトです。
-      </p>
+      </p> */}
 
       {user && (
         <div className="text-center lg:text-right">
@@ -119,18 +119,9 @@ export default function Index() {
           />
         </div>
       )}
-      <h2 className="my-12 text-center text-2xl font-semibold">投稿一覧</h2>
-      <p className="text-1xl text-center">
-        {searchName === ""
-          ? `投稿数 ${postData.length}件`
-          : `検索結果 ${
-              postData.filter((data) =>
-                data.title.toLowerCase().includes(searchName.toLowerCase())
-              ).length
-            }件`}
-      </p>
-
-      <h2 className="my-12 text-center text-xl font-semibold">カテゴリー</h2>
+      <h2 className="my-4 md:my-12 text-center text-xl font-semibold">
+        カテゴリー
+      </h2>
 
       {POST_CATEGORIES.map((categori) => {
         // userの情報
@@ -141,7 +132,7 @@ export default function Index() {
         return (
           <span key={categori.id}>
             <span
-              className={`rounded-xltext-center + m-6  inline-block rounded-xl border  p-1 font-bold hover:text-white ${categori.className}`}
+              className={`text-center m-2 md:m-6 inline-block rounded-xl border p-1 font-bold hover:text-white ${categori.className}`}
             >
               <Link
                 as={`/post/categories/${categori.title}`}
@@ -156,7 +147,19 @@ export default function Index() {
           </span>
         );
       })}
-      <div className="m-auto my-10 flex justify-center">
+      <h2 className="my-6 md:my-12 text-center text-2xl font-semibold">
+        投稿一覧
+      </h2>
+      <p className="text-1xl text-center">
+        {searchName === ""
+          ? `投稿数 ${postData.length}件`
+          : `検索結果 ${
+              postData.filter((data) =>
+                data.title.toLowerCase().includes(searchName.toLowerCase())
+              ).length
+            }件`}
+      </p>
+      <div className="m-auto my-5 md:my-10 flex flex-wrap justify-center">
         <TextField
           id="outlined-basic"
           type="search"
@@ -166,6 +169,8 @@ export default function Index() {
             setSearchName(event.target.value);
           }}
         />
+      </div>
+      <div className="m-auto my-5 md:my-10 flex flex-wrap justify-center">
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small">ネタバレ</InputLabel>
 
@@ -185,9 +190,6 @@ export default function Index() {
             ))}
           </Select>
         </FormControl>
-      </div>
-
-      <div className="flex justify-end">
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small">新しい順</InputLabel>
 
@@ -209,7 +211,9 @@ export default function Index() {
         </FormControl>
       </div>
 
-      <div className="m-auto flex flex-col flex-wrap justify-center  md:flex-row">
+      <div className="m-auto my-5 md:my-10 flex justify-end"></div>
+
+      <div className="m-auto flex flex-col flex-wrap justify-center md:flex-row">
         {postData.length === 0 ? (
           <p className="my-2 text-center">記事がありません。</p>
         ) : postData.filter((post) => {
@@ -267,7 +271,7 @@ export default function Index() {
           />
         )}
       </div>
-      <div className="my-4">
+      <div className="w-11/12 m-auto my-4">
         <p>© 尾田栄一郎／集英社・フジテレビ・東映アニメーション</p>
         <p>© 和久井健・講談社／アニメ「東京リベンジャーズ」</p>
         <p>©原泰久／集英社・キングダム製作委員会</p>
