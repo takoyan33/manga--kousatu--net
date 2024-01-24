@@ -183,6 +183,22 @@ const Details = ({ post }) => {
     },
   ];
 
+    // const NETABARE_LIST = [
+    //   {
+    //     sortId: 1,
+    //     label: "ネタバレ有",
+    //     value: "ネタバレ有",
+    //     onClick: () => useGetNetabrePosts(setPostData),
+    //   },
+    //   {
+    //     sortId: 2,
+    //     label: "ネタバレ無",
+    //     value: "ネタバレ無",
+    //     onClick: () => useGetNoNetabrePosts(setPostData),
+    //   },
+    // ];
+
+
   return (
     <>
       <CommonHead />
@@ -190,13 +206,13 @@ const Details = ({ post }) => {
         <Link href="/top">トップ</Link>　＞　投稿記事　＞　
         {post.fields.title.stringValue}
       </p>
-      <h1 className="my-12 text-center text-2xl font-semibold">
+      <h1 className="my-4 md:my-12 text-center text-2xl font-semibold">
         {post.fields.title.stringValue}の考察記事一覧
       </h1>
 
       <p className="text-1xl text-center">投稿数　{posts.length}件</p>
 
-      <div className="m-auto my-10 flex justify-center">
+      <div className="m-auto my-5 md:my-10 flex flex-wrap justify-center">
         <TextField
           id="outlined-basic"
           type="search"
@@ -206,7 +222,8 @@ const Details = ({ post }) => {
             setSearchName(event.target.value);
           }}
         />
-        {/* <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+      </div>
+      {/* <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
           <InputLabel id='demo-select-small'>ネタバレ</InputLabel>
 
           <Select labelId='demo-select-small' id='demo-select-small' label='ネタバレ'>
@@ -217,9 +234,27 @@ const Details = ({ post }) => {
             ))}
           </Select>
         </FormControl> */}
-      </div>
 
-      <div className="flex justify-end">
+      <div className="m-auto my-5 md:my-10 flex flex-wrap justify-center">
+        {/* <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="demo-select-small">ネタバレ</InputLabel>
+
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+            label="ネタバレ"
+          >
+            {NETABARE_LIST.map((netabare) => (
+              <MenuItem
+                key={netabare.sortId}
+                value={netabare.value}
+                onClick={netabare.onClick}
+              >
+                {netabare.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl> */}
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small">新しい順</InputLabel>
 
@@ -274,6 +309,12 @@ const Details = ({ post }) => {
             まだ投稿されていません
           </p>
         )}
+      </div>
+      <div className="w-11/12 m-auto my-4">
+        <p>© 尾田栄一郎／集英社・フジテレビ・東映アニメーション</p>
+        <p>© 和久井健・講談社／アニメ「東京リベンジャーズ」</p>
+        <p>©原泰久／集英社・キングダム製作委員会</p>
+        <p>©芥見下々／集英社・呪術廻戦製作委員会</p>
       </div>
     </>
   );

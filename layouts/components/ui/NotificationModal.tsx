@@ -6,7 +6,7 @@ export const NotificationModal = ({ open, handleClose }: any) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box
-        className="m-auto mt-20 h-3/4 max-w-5xl bg-white p-4"
+        className="m-auto mt-20 h-3/4 max-w-5xl bg-white p-4 w-11/12 md:w-full"
         sx={{ overflowY: "scroll" }}
       >
         <Typography variant="h6">通知欄</Typography>
