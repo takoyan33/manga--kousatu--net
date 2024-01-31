@@ -79,6 +79,12 @@ export default function Index() {
 
   const NETABARE_LIST = [
     {
+      sortId: 0,
+      label: "全て",
+      value: "全て",
+      onClick: () => useFetchPosts(setPostData),
+    },
+    {
       sortId: 1,
       label: "ネタバレ有",
       value: "ネタバレ有",
@@ -95,20 +101,6 @@ export default function Index() {
   return (
     <div>
       <CommonHead />
-      {/* <div className="m-auto my-5 flex justify-center text-center"> */}
-      {/* <Image
-          className="m-auto"
-          height={100}
-          width={200}
-          src="/logo.png"
-          alt="ロゴ"
-        />
-      </div>
-      <p className="my-5 text-center">
-        Manga Studyでは、人気漫画の考察を
-        <br />
-        自由に投稿・閲覧できるwebサイトです。
-      </p> */}
 
       {user && (
         <div className="text-center lg:text-right">

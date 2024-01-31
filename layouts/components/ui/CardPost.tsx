@@ -71,9 +71,9 @@ export const CardPost = React.memo(
               <dl>
                 <div className="m-auto flex justify-center">
                   <Image
-                    className="m-auto max-w-sm text-center"
-                    height={250}
-                    width={250}
+                    className="m-auto max-w-sm text-center object-cover h-24 w-48"
+                    height={300}
+                    width={300}
                     src={downloadURL}
                     alt="画像"
                   />

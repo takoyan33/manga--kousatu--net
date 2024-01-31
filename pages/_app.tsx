@@ -8,7 +8,7 @@ export default function MyApp({ Component, pageProps }:any) {
     <AuthProvider>
       <>
         <Header />
-        <div className='m-auto mt-10 max-w-5xl'>
+        <div className='m-auto mt-10 max-w-7xl'>
           <Component {...pageProps} />
         </div>
         <Footer />
